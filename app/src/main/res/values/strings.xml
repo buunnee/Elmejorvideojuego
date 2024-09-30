@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Elmejorvideojuego</string>
+    <string name="title">¿Cuál es el más mejor videojuego?</string>
+    <string name="fallout">Fallout 4</string>
+    <string name="lol">League of Legends</string>
+    <string name="fortnite">Fortnite</string>
+    <string name="tf2">Team Fortress 2</string>
+    <string name="default_message">A ver cuál escoges...</string>
+    <string name="checkbox_checked_message">¡Sí que te mola!</string>
+    <string name="checkbox_unchecked_message">¡¿No te molan!?</string>
+    <string name="veo_message">Veo que te gusta el...</string>
+    <string name="checkbox_text">¿Te gusta la encuesta?</string>
 </resources>

@@ -1,24 +1,50 @@
 package com.example.elmejorvideojuego;
 
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, CheckBox.OnCheckedChangeListener {
+
+    private TextView message;
+    private CheckBox checkBox;
+    private RadioButton radioFallout, radioLol, radioFortnite, radioTf2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        // Referencias a los elementos del layout
+        message = findViewById(R.id.message);
+        checkBox = findViewById(R.id.checkBox);
+
+        RadioGroup radioGroup = findViewById(R.id.radioGroup);
+        radioFallout = findViewById(R.id.radioFallout);
+        radioLol = findViewById(R.id.radioLol);
+        radioFortnite = findViewById(R.id.radioFortnite);
+        radioTf2 = findViewById(R.id.radioTf2);
+
+        radioGroup.setOnCheckedChangeListener(this);
+        checkBox.setOnCheckedChangeListener(this);
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        // Mostrar el mensaje "Veo que te gusta el..."
+        message.setText(getString(R.string.veo_message));
+    }
+
+    @Override
+    public void onCheckedChanged(android.widget.CompoundButton buttonView, boolean isChecked) {
+        // Cambiar el mensaje basado en el estado del CheckBox
+        if (isChecked) {
+            message.setText(getString(R.string.checkbox_checked_message));
+        } else {
+            message.setText(getString(R.string.checkbox_unchecked_message));
+        }
     }
 }
